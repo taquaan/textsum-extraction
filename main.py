@@ -2,10 +2,10 @@ import numpy as np
 import nltk
 import re
 from nltk.corpus import stopwords
-from sklearn.feature_extraction.text import CountVectorizer
 
-#Download nltk.punkt and nltk.stopwords before start - nltk.download('punkt') - nltk.download('stopwords')
-
+#Download nltk.punkt and nltk.stopwords before start
+# nltk.download('punkt')
+# nltk.download('stopwords')
 
 text='''Santiago is a Shepherd who has a recurring dream which is supposedly prophetic. Inspired on learning this, he undertakes a journey to Egypt to discover the meaning of life and fulfill his destiny. During the course of his travels, he learns of his true purpose and meets many characters, including an “Alchemist”, that teach him valuable lessons about achieving his dreams. Santiago sets his sights on obtaining a certain kind of “treasure” for which he travels to Egypt. The key message is, “when you want something, all the universe conspires in helping you to achieve it.” Towards the final arc, Santiago gets robbed by bandits who end up revealing that the “treasure” he was looking for is buried in the place where his journey began. The end.'''
 
@@ -17,13 +17,5 @@ def word_preprocess(text):
     tokens =[[words for words in sentence.split(' ') if words not in stop_words] for sentence in clean]
     return tokens
 
-# Vectorize
-def vectorize(tokens):
-    flat_list = [item for sublist in tokens for item in sublist]
-    vectorizer = CountVectorizer()
-    X = vectorizer.fit_transform(flat_list)
-    print(len(vectorizer.get_feature_names_out()))
-    return X
-
 tokens = word_preprocess(text)
-matrix = vectorize(tokens)
+print(tokens)

@@ -2,8 +2,8 @@ import numpy as np
 import nltk
 import re
 from nltk.corpus import stopwords
-from sklearn.feature_extraction.text import CountVectorizer
 
+# Downloading Microsoft Visual C++ 14.0 or greater is required.
 #Download nltk.punkt and nltk.stopwords before start - nltk.download('punkt') - nltk.download('stopwords')
 
 
@@ -14,16 +14,9 @@ def word_preprocess(text):
     sentences = nltk.sent_tokenize(text)
     clean = [re.sub(r'[^\w\s]','',sentence.lower()) for sentence in sentences]
     stop_words = stopwords.words('english')
-    tokens =[[words for words in sentence.split(' ') if words not in stop_words] for sentence in clean]
+    tokens = [[words for words in sentence.split(' ') if words not in stop_words] for sentence in clean]
+    print(tokens)
     return tokens
 
-# Vectorize
-def vectorize(tokens):
-    flat_list = [item for sublist in tokens for item in sublist]
-    vectorizer = CountVectorizer()
-    X = vectorizer.fit_transform(flat_list)
-    print(len(vectorizer.get_feature_names_out()))
-    return X
-
 tokens = word_preprocess(text)
-matrix = vectorize(tokens)
+

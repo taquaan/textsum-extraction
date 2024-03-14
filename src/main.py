@@ -48,7 +48,7 @@ def generate_summary(sentences):
         nx_graph = nx.from_numpy_array(similarity_matrix)
         scores = nx.pagerank(nx_graph)
         # Get top sentences
-        top_sentences = sorted(((scores[i], sentence) for i, sentence in enumerate(sentences)), reverse=True)[:4]
+        top_sentences = sorted(((scores[i], sentence) for i, sentence in enumerate(sentences)), reverse=True)[:5]
         return top_sentences
     except Exception as e:
         print(f"Error occurred in generate_summary: {e}")

@@ -113,6 +113,4 @@ def textRankSummary(text):
         print("\nProgram terminated by user.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-    def getSummary():
-        return final_summary
 

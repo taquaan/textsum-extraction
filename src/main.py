@@ -1,11 +1,10 @@
-from util.textRank import textRankSummary
-from util.tfIdf import tFIDSummary
+from metric import evaluate_using_rouge
 
-def main():
+def main(text):
     print("\nInput:")
     text = input()
-    # textRank = textRankSummary(text)
-    tfIdf = tFIDSummary(text)
+    summary_len = 5
 
+    evaluate_using_rouge(text, summary_len)
 if __name__ == "__main__":
     main()

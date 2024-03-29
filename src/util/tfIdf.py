@@ -1,24 +1,37 @@
-import spacy
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from heapq import nlargest
+from nltk.tokenize import sent_tokenize, word_tokenize
 
-def tFIDSummary(text):
+def tFID_summary(text, n):
     try:
-        nlp = spacy.load("en_core_web_sm")
+        sentences = sent_tokenize(text)
 
-        # Text preprocess
-        doc = nlp(text)
-        sentences = [sent.text for sent in doc.sents]
-
-        # TF-IDF Matrix
+        # Create the TF-IDF Matrix
         vectorizer = TfidfVectorizer(stop_words='english')
         tfidf_matrix = vectorizer.fit_transform(sentences)
 
-        # Cosine similarity
-        score = cosine_similarity(tfidf_matrix[-1], tfidf_matrix[-1])[0]
+        # Cosine similarities between each sentences and document
+        sent_scores = cosine_similarity(tfidf_matrix[-1], tfidf_matrix[:-1])[0]
 
-        # Select the top sentences with highest score
-        
+        # Select the top n sentences with highest scores
+        summary_sentences = nlargest(n, range(len(sent_scores)), key=sent_scores.__getitem__)
+
+        summary_tfidf = ' '.join([sentences[i] for i in sorted(summary_sentences)])
+
+        summary_sentences = summary_tfidf.split('. ')
+        formatted_summary = '.\n'.join(summary_sentences)
+
+        name = "TF-IDF METHOD"
+        name_len = (60 - len(name)) // 2
+        print("\n\n" + "=" * name_len + " " + name + " " + "=" * name_len)
+        print("Summarized text:")
+        print(formatted_summary)
+
+        return formatted_summary
+    except KeyboardInterrupt:
+        print(" - Program terminated by user.")
     except Exception as e:
-        print(f"Error occurred in preprocess_text: {e}")
+        raise RuntimeError(f" - Error occurred in TF-IDF Summary: {e}")
+    
+

@@ -11,7 +11,9 @@ from gensim.corpora import Dictionary
 
 def preprocess_text(text):
     try:
-        sentences = re.split(r'\.\s|\?\s|\!\s', text)
+        nlp = spacy.load("en_core_web_sm")
+        doc = nlp(text)
+        sentences = [sent.text.strip() for sent in doc.sents]
         return sentences
     except Exception as e:
         print(f"Error occurred in preprocess_text: {e}")
@@ -92,7 +94,7 @@ def textRankSummary(text):
         top_sentences = generate_summary(sentences)
         if top_sentences:
             print("\nText Rank's Summarized text:")
-            summary_paragraph = ". ".join(sentence for score, sentence in top_sentences)
+            summary_paragraph = " ".join(sentence for score, sentence in top_sentences)
             print(summary_paragraph)
             final_summary = summary_paragraph
         else:

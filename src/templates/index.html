@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TextSum Extraction App</title>
+    <link rel="stylesheet" href="../static/css/index.css" />
+  </head>
+  <body>
+    <div class="topnav">
+      <h1>TextSum</h1>
+    </div>
+    <main class="content">
+      <div class="input text-container">
+        <textarea
+          class="input-text text"
+          placeholder="Enter text to summarize..."
+          id="originalText"
+        ></textarea>
+        <div class="btns">
+          <button class="summarize-btn" id="summarizeBtn">Summarize</button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            width="40"
+            height="40"
+            class="restart-btn"
+            id="restartBtn"
+          >
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              d="M125.7 160H176c17.7 0 32 14.3 32 32s-14.3 32-32 32H48c-17.7 0-32-14.3-32-32V64c0-17.7 14.3-32 32-32s32 14.3 32 32v51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div class="output text-container">
+        <textarea
+          class="output-text text"
+          placeholder="Summarized text will appear here... (READ-ONLY)"
+          id="summarizedText"
+          readonly
+        ></textarea>
+      </div>
+    </main>
+    <script src="../static/js/index.js" type="module"></script>
+  </body>
+</html>

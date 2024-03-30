@@ -1,0 +1,125 @@
+/* FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --main-color: #3f3fff;
+}
+
+/* MAIN */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.topnav {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 0 3vw;
+  box-shadow: 0px 0px 3px #c7c7c7;
+}
+.topnav > h1 {
+  font-size: 45px;
+  font-weight: 800;
+  color: var(--main-color);
+}
+.content {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  align-items: start;
+  justify-content: center;
+  padding: 0 3vw;
+  padding-top: 50px;
+}
+.text-container {
+  width: 100%;
+}
+.text-container > .text {
+  font-size: 20px;
+  width: 100%;
+  height: 70vh;
+  border-radius: 25px;
+  padding: 30px;
+}
+.input > .text {
+  margin-bottom: 20px;
+}
+.content > .input {
+  width: 70%;
+}
+.content > .output {
+  width: 30%;
+}
+.btns {
+  display: flex;
+  gap: 20px;
+  justify-content: start;
+  align-items: center;
+}
+.input > .btns > .summarize-btn {
+  font-size: 17px;
+  padding: 10px 80px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e7e7e7;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btns > .summarize-btn:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
+.input > .btns > .restart-btn {
+  cursor: pointer;
+}
+.input > .btns > .restart-btn:hover path {
+  fill: var(--main-color);
+}
+.btns > .restart-btn > path {
+  fill: #acacaa;
+  transition: 0.2s;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 930px) {
+  .content > .input {
+    width: 50%;
+  }
+  .content > .output {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topnav > h1 {
+    font-size: 35px;
+  }
+  .content {
+    flex-direction: column;
+  }
+  .content > .input {
+    width: 100%;
+  }
+  .content > .output {
+    width: 100%;
+  }
+  .text-container > .text {
+    height: 30vh;
+    font-size: 16px;
+  }
+  .btns {
+    padding: 0 10px;
+  }
+  .input > .btns > .summarize-btn {
+    font-size: 14px;
+  }
+  .input > .btns > .restart-btn {
+    width: 30px;
+    height: 30px;
+  }
+}

@@ -40,7 +40,7 @@ def frequency_summary(text, n):
         name = "FREQUENCY-BASED METHOD"
         name_len = (60 - len(name)) // 2
         print("\n\n" + "=" * name_len + " " + name + " " + "=" * name_len)
-        print("Summarized text:")
+        print("\nFrequency-based's Summarized text:")
         print(formatted_summary)
 
         return formatted_summary

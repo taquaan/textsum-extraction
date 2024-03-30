@@ -1,6 +1,6 @@
 from metric import evaluate_using_rouge
 
-def main(text):
+def main():
     print("\nInput:")
     text = input()
     summary_len = 5

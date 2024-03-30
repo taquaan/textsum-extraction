@@ -25,7 +25,7 @@ def tFID_summary(text, n):
         name = "TF-IDF METHOD"
         name_len = (60 - len(name)) // 2
         print("\n\n" + "=" * name_len + " " + name + " " + "=" * name_len)
-        print("Summarized text:")
+        print("\nTF-IDF's Summarized text:")
         print(formatted_summary)
 
         return formatted_summary

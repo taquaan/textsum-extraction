@@ -32,7 +32,7 @@ def extract_named_entities(sentences):
         print(f"Error occurred in extract_named_entities: {e}")
         return []
 
-def generate_summary(sentences):
+def generate_summary(sentences, sent_len):
     try:
         # Word Embedding using Word2Vec
         sentence_tokens = [sentence.split() for sentence in sentences]
@@ -50,7 +50,7 @@ def generate_summary(sentences):
         nx_graph = nx.from_numpy_array(similarity_matrix)
         scores = nx.pagerank(nx_graph)
         # Get top sentences
-        top_sentences = sorted(((scores[i], sentence) for i, sentence in enumerate(sentences)), reverse=True)[:5]
+        top_sentences = sorted(((scores[i], sentence) for i, sentence in enumerate(sentences)), reverse=True)[:sent_len]
         return top_sentences
     except Exception as e:
         print(f"Error occurred in generate_summary: {e}")
@@ -73,9 +73,9 @@ def perform_topic_modeling(sentences):
         print(f"Error occurred in perform_topic_modeling: {e}")
         return []
 
-def textRankSummary(text):
+def textRankSummary(text, sent_len):
     try:
-        name = "TEXT RANK ALGORITHM"
+        name = "TEXT RANK ALGORITHM METHOD"
         name_len = (60 - len(name)) // 2
         print("\n" + "=" * name_len + " " + name + " " + "=" * name_len)
 
@@ -91,7 +91,7 @@ def textRankSummary(text):
         for i, entities in enumerate(sentence_entities):
             print(f"Sentence {i+1}: {entities}")
         
-        top_sentences = generate_summary(sentences)
+        top_sentences = generate_summary(sentences, sent_len)
         if top_sentences:
             print("\nText Rank's Summarized text:")
             summary_paragraph = " ".join(sentence for score, sentence in top_sentences)

@@ -11,7 +11,7 @@ def evaluate_using_rouge(original_text, sum_len):
         rouge = Rouge()
         model = Summarizer()
 
-        reference_summary = model(text, num_sentences=sum_len)
+        reference_summary = original_text
 
         tr_summary = textRankSummary(text, sum_len)
         frq_summary = frequency_summary(text, sum_len)

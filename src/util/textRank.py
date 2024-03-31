@@ -6,7 +6,7 @@ from gensim.models import Word2Vec
 def preprocess_text(text):
     try:
         sentences = sent_tokenize(text)
-        print(sentences)
+        return sentences
     except Exception as e:
         print(f"Error occurred in preprocess_text: {e}")
         return []

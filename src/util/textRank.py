@@ -1,21 +1,12 @@
 import numpy as np
-import spacy
+from nltk.tokenize import sent_tokenize
 import networkx as nx
 from gensim.models import Word2Vec
 
-# Required downloads before start:
-# !python -m spacy download en_core_web_sm
-
 def preprocess_text(text):
     try:
-        # Load spaCy English model
-        nlp = spacy.load("en_core_web_sm")
-        
-        # Tokenize text into sentences using spaCy
-        doc = nlp(text)
-        sentences = [sent.text.strip() for sent in doc.sents]
-        
-        return sentences
+        sentences = sent_tokenize(text)
+        print(sentences)
     except Exception as e:
         print(f"Error occurred in preprocess_text: {e}")
         return []

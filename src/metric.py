@@ -1,5 +1,4 @@
 from format.text_format import text_format
-from summarizer import Summarizer
 from rouge import Rouge
 from util.textRank import textRankSummary
 from util.frequency import frequency_summary
@@ -9,7 +8,6 @@ def evaluate_using_rouge(original_text, sum_len):
     try:
         text = text_format(original_text)
         rouge = Rouge()
-        model = Summarizer()
 
         reference_summary = original_text
 
